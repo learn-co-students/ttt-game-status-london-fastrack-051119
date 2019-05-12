@@ -16,11 +16,12 @@ WIN_COMBINATIONS = [
 ]
 
 def won(board)
-  WIN_COMBINATIONS.each do |winning_combination|
+  WIN_COMBINATIONS.select do |winning_combination|
     winning_combination.each do |winning_positions|
-      if winning_positions == "" && winning_positions == "" && winning_positions == ""
-        return false
+      if winning_positions == ""
+        return true
       end
+      return false
     end
   end
 
