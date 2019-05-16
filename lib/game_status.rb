@@ -17,19 +17,12 @@ WIN_COMBINATIONS = [
 
 
 def won?(board)
-  # if board.all? {|board_positions| board_positions == " "}
-  #   false
-  # end
-  # elsif board.select.with_index {|board_positions, index|
-  #     board_positions == "X" or "O" && index == WIN_COMBINATIONS.select {|winning_combination|
-  #     winning_combination.select {|winning_position| winning_position}}}
-  #     return WIN_COMBINATIONS[0]
   WIN_COMBINATIONS.each do |winning_positions|
     if winning_positions.all? {|game_square| board[game_square] == "X"} || winning_positions.all? {|game_square| board[game_square] == "O"}
-      return winning_positions
+       return winning_positions
     end
   end
-  return false
+   false
 end
 
 def full?(board)
@@ -53,11 +46,17 @@ def over?(board)
 end
 
 def winner(board)
-  if over?(board) == true && won?(board) == false
-     nil
-  elsif won?(board)[0] && won?(board)[1] && won?(board)[2] == "X"
-     return "X"
-  elsif won?(board)[0] && won?(board)[1] && won?(board)[2] == "O"
-    return "O"
-  end
+  # if draw?(board) == true
+  #   return nil
+  # end
+position_1 = won?(board)[0]
+position_2 = won?(board)[1]
+position_3 = won?(board)[2]
+if board[position_1] && board[position_2] && board[position_3] == "X"
+  return "X"
+end
+
+  # if over?(board) && (won?(board)[0] && won?(board)[1] && won?(board)[2] == "X")
+  #   return "X"
+  # end
 end
